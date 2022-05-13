@@ -5,10 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -18,9 +18,19 @@ public class Asset {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
+    @NotBlank
     String name;
-    Long manufacturingDate;
-    Long expiryDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    Date manufacturingId;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    Date expiry_date;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    List<Staff> assigned_to;
+
 }
 
 

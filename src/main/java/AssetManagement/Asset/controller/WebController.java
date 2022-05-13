@@ -1,6 +1,8 @@
 package AssetManagement.Asset.controller;
 
+import AssetManagement.Asset.entity.Assign;
 import AssetManagement.Asset.entity.Staff;
+import AssetManagement.Asset.repository.StaffRepo;
 import AssetManagement.Asset.services.WebService;
 import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.text.View;
 
-
 @Controller
 public class WebController {
 
@@ -22,7 +23,7 @@ public class WebController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("applicationName" , "Asset Management");
+        model.addAttribute("applicationName" , "hhhh" );
         return "index";
     }
 
@@ -34,15 +35,15 @@ public class WebController {
 
     @PostMapping("/submit")
     public String submit(Model model, @RequestParam("StaffId") String StaffId,@RequestParam("Name") String name,@RequestParam("Mobile") String mobile,@RequestParam("Email") String email, @RequestParam("Password") String password ) {
-
         Staff staff =  new Staff();
         staff.setStaffId(StaffId);
         staff.setEmail(email);
         staff.setMobile(mobile);
         staff.setPassword(password);
         staff.setName(name);
-
         webService.saveStaff(staff);
+//
+//        staffRepo.save(staff);
 
         return "submit";
     }
@@ -62,3 +63,6 @@ public class WebController {
 
 
 }
+/*
+Inversion of Control  ///  IoC Container
+ */

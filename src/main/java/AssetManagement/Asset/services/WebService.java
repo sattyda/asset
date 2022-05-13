@@ -10,6 +10,10 @@ import java.util.Stack;
 
 @Service
 public class WebService {
+
+
+    public int myValue = 0;
+
     @Autowired
     StaffRepo staffRepo;
 
@@ -18,13 +22,8 @@ public class WebService {
     }
 
     public Staff verifyStaff(String email, String password) {
-
         List<Staff> sStaff = staffRepo.findByEmail(email);
-
-
         List<Staff> staff = staffRepo.myquery(email);
-
-
         return sStaff.get(0);
     }
 }
