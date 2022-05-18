@@ -71,7 +71,10 @@
                 </div>
                 <div class="row">
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-12">
+                        <ul th:each="data : ${errorMessage} != null ? ${errorMessage.getAllErrors()} : ${empty}">
+                            <li th:text="${data.getDefaultMessage()}"></li>
+                        </ul>
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
                     <!-- /.col -->

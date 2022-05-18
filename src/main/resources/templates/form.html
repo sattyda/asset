@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        th,td,table,tr {
+
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+
+    <b th:text="${user.name}"></b>
+
+    <form action="/save" method="post" >
+        <input type="text" name="name" placeholder="Enter Your Name" th:value="${user.email}" />
+    </form>
+
+    <ol style="text-decoration: none; list-style: none" th:each="user : ${users}">
+        <li th:text="${user.name}"></li>
+    </ol>
+
+    <ul>
+        <li>Cricket</li>
+        <li>Tennis</li>
+        <li>Football</li>
+    </ul>
+
+    <ol>
+        <li>Cricket</li>
+        <li>Tennis</li>
+        <li>Football</li>
+    </ol>
+
+    <table style="border-collapse:collapse" >
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+        </tr>
+
+    </table>
+
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <hr/> <hr/>
+
+    <table style="border-collapse:collapse" >
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Password</th>
+            <th>Staff Id</th>
+        </tr>
+
+        <tr th:each="user : ${staffs}">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.mobile}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.staffId}"></td>
+        </tr>
+    </table>
+</body>
+</html>
